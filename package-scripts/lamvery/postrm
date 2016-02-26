@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Perform necessary lamvery removal steps
+# after package is uninstalled.
+#
+
+echo "lamvery has been uninstalled!"
+
+exit 0
