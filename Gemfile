@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
 
-gem 'omnibus', '~> 5.0'
-gem 'omnibus-software', :git => 'git://github.com/opscode/omnibus-software.git', :branch => 'master'
+gem 'omnibus', github: 'chef/omnibus'
+gem 'omnibus-software', :github => 'opscode/omnibus-software'
+
+group :development do
+  gem 'kitchen-docker_cli'
+  gem 'berkshelf'
+end

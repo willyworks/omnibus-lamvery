@@ -30,20 +30,21 @@ relative_path "Python-#{version}"
 
 build do
   env = {
-    "CFLAGS" => "-I#{install_dir}/embedded/include -O3 -g -pipe",
+    "CFLAGS" => "-I#{install_dir}/embedded/include -O2 -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector --param=ssp-buffer-size=4 -m64 -mtune=generic -D_GNU_SOURCE -fPIC -fwrapv",
     "LDFLAGS" => "-Wl,-rpath,#{install_dir}/embedded/lib -L#{install_dir}/embedded/lib",
   }
 
   command "./configure" \
           " --prefix=#{install_dir}/embedded" \
-          "--enable-ipv6" \
-          "--enable-shared" \
-          "--enable-unicode=ucs4" \
-          "--with-dbmliborder=gdbm:ndbm:bdb" \
-          "--with-system-expat" \
-          "--with-system-ffi" \
-          "--with-dtrace" \
-          " --with-dbmliborder=", env: env
+          " --enable-ipv6" \
+          " --enable-shared" \
+          " --enable-unicode=ucs4" \
+          " --with-dbmliborder=gdbm:ndbm:bdb" \
+          " --with-system-expat" \
+          " --with-system-ffi" \
+          " --with-dtrace" \
+          " --with-tapset-install-dir=#{install_dir}/embedded/share/systemtap/tapset" \
+          " --with-valgrind", env: env
 
   make env: env
   make "install", env: env
@@ -53,4 +54,6 @@ build do
 
   # Remove unused extension which is known to make healthchecks fail on CentOS 6
   delete "#{install_dir}/embedded/lib/python2.7/lib-dynload/_bsddb.*"
+
+  command "ln -fs #{install_dir}/embedded/bin/python #{install_dir}/bin/python", :env => env
 end
