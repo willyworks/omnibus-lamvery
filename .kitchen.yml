@@ -21,9 +21,11 @@ platforms:
 
 suites:
   - name: default
-    run_list: omnibus::default
+    run_list:
+      - omnibus::default
+      - omnibus-lamvery::default
     attributes:
       omnibus:
-        build_user:          root
-        build_user_group:    root
+        build_user:          omnibus
+        build_user_group:    omnibus
         install_dir:         /opt/lamvery

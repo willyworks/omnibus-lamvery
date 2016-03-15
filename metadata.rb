@@ -1,0 +1,8 @@
+name 'omnibus-lamvery'
+maintainer 'The Authors'
+maintainer_email 'you@example.com'
+license 'all_rights'
+description 'Installs/Configures omnibus-lamvery'
+long_description 'Installs/Configures omnibus-lamvery'
+version '0.1.0'
+depends 'omnibus'
