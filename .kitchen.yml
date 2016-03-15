@@ -4,6 +4,7 @@ driver:
 
 transport:
   name: docker_cli
+  lxc_driver: true
 
 provisioner:
   name: chef_zero
