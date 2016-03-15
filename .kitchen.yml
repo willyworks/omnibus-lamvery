@@ -1,5 +1,6 @@
 driver:
   name: docker_cli
+  volume: <%= Dir::pwd %>:/lamvery
 
 transport:
   name: docker_cli

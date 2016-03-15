@@ -2,6 +2,9 @@ DEPENDENCIES
   apt (~> 2.8)
   freebsd (~> 0.3)
   omnibus
+  omnibus-lamvery
+    path: .
+    metadata: true
   yum-epel (~> 0.6)
 
 GRAPH
@@ -37,6 +40,8 @@ GRAPH
     windows (>= 0.0.0)
     windows-sdk (>= 0.0.0)
     wix (>= 0.0.0)
+  omnibus-lamvery (0.1.0)
+    omnibus (>= 0.0.0)
   remote_install (1.0.2)
   windows (1.39.2)
     chef_handler (>= 0.0.0)
