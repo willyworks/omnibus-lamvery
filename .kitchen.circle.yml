@@ -29,6 +29,7 @@ suites:
       - omnibus-lamvery::default
     attributes:
       omnibus:
-        build_user:          omnibus
-        build_user_group:    omnibus
+        build_user:          root
+        build_user_group:    root
+        build_user_home:     /root
         install_dir:         /opt/lamvery
