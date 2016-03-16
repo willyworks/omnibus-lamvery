@@ -2,7 +2,7 @@
 machine:
   pre:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
-    - echo 'DOCKER_OPTS="-s btrfs -D -e lxc"' | sudo tee /etc/default/docker
+    - echo 'DOCKER_OPTS="-s btrfs -e lxc -D"' | sudo tee /etc/default/docker
   ruby:
     version: 2.2.3
   services:
