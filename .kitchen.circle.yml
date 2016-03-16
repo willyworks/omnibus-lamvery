@@ -1,10 +1,11 @@
 driver:
   name: docker_cli
   volume: <%= Dir::pwd %>:/lamvery
+  skip_preparation: true
 
 transport:
   name: docker_cli
-#  lxc_driver: true
+  lxc_driver: true
 
 provisioner:
   name: chef_zero
