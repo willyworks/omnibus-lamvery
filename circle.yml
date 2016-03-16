@@ -11,4 +11,4 @@ dependencies:
 
 test:
   override:
-    - bin/kitchen test
+    -  KITCHEN_YAML=.kitchen.circle.yml bin/kitchen test

@@ -178,6 +178,3 @@ DEPENDENCIES
   kitchen-docker_cli
   omnibus!
   omnibus-software!
-
-BUNDLED WITH
-   1.10.6

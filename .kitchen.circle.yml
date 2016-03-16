@@ -16,16 +16,17 @@ platforms:
   #   run_list: yum-epel::default
   #   driver_config:
   #     image: centos:centos6.6
-  - name: ubuntu-14.04
+  - name: ubuntu-14
     run_list: apt::default
+    driver_config:
+      image: marcy/omnibus-ubuntu-14
   # - name: ubuntu-12.04
   #   run_list: apt::default
 
 suites:
   - name: default
     run_list:
-      - omnibus::default
-      # - omnibus-lamvery::default
+      - omnibus-lamvery::default
     attributes:
       omnibus:
         build_user:          omnibus
