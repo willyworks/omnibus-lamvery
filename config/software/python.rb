@@ -37,7 +37,7 @@ build do
   command "./configure" \
           " --prefix=#{install_dir}/embedded" \
           " --enable-ipv6" \
-          " --enable-shared" \
+  #        " --enable-shared" \
           " --enable-unicode=ucs4" \
           " --with-dbmliborder=gdbm:ndbm:bdb" \
           " --with-system-expat" \
