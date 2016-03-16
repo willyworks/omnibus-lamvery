@@ -1,0 +1,5 @@
+ubuntu14:
+  build: ubuntu14
+  volumes:
+    - $PWD:/build
+  working_dir: /build
