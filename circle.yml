@@ -13,4 +13,5 @@ dependencies:
 
 test:
   override:
-    -  docker-compose up
+    - chmod +x build.sh
+    - docker-compose up

@@ -3,5 +3,4 @@ ubuntu14:
   working_dir: /build
   volumes:
     - .:/build
-  entrypoint:
-    - ./build.sh
+  command: /build/build.sh
