@@ -8,6 +8,8 @@ machine:
     - docker
 
 dependencies:
+  cache_directories:
+    - ~/local
   override:
     - sudo pip install docker-compose
 
