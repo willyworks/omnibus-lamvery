@@ -41,10 +41,7 @@ build do
           " --enable-unicode=ucs4" \
           " --with-dbmliborder=gdbm:ndbm:bdb" \
           " --with-system-expat" \
-          " --with-system-ffi" \
-          " --with-dtrace" \
-          " --with-tapset-install-dir=#{install_dir}/embedded/share/systemtap/tapset" \
-          " --with-valgrind", env: env
+          " --with-system-ffi", env: env
 
   make env: env
   make "install", env: env
