@@ -1,5 +1,6 @@
 ubuntu14:
-  build: ubuntu14
   volumes:
     - $PWD:/build
+  image: marcy/omnibus-ubuntu-14
   working_dir: /build
+  command: /build/build.sh
