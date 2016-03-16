@@ -1,5 +1,5 @@
 FROM marcy/omnibus-ubuntu-14
 
-RUN . /root/load-omnibus-toolchain.sh && bundle install --binstubs --without development
+ADD build.sh /root/
 
-ENTRYPOINT ["bin/omnibus", "build"]
+ENTRYPOINT ["/root/build.sh"]
