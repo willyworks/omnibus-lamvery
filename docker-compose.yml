@@ -4,5 +4,4 @@ ubuntu14:
   volumes:
     - .:/build
   entrypoint:
-    - sh
-    - build.sh
+    - ./build.sh
