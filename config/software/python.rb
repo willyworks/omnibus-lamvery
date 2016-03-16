@@ -36,11 +36,10 @@ build do
 
   command "./configure" \
           " --prefix=#{install_dir}/embedded" \
+          " --enable-shared" \
           " --enable-ipv6" \
           " --enable-unicode=ucs4" \
-          " --with-dbmliborder=gdbm:ndbm:bdb" \
-          " --with-system-expat" \
-          " --with-system-ffi", env: env
+          " --with-dbmliborder=gdbm:ndbm:bdb", env: env
 
   make env: env
   make "install", env: env
