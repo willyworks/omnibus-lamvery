@@ -18,7 +18,7 @@ dependencies:
   pre:
     - wget -O - https://github.com/walter-cd/walter/releases/download/v1.3.0/walter_1.3.0_linux_amd64.tar.gz | tar zxvf -
     - docker pull marcy/omnibus-ubuntu-14
-    - chmod +x build.sh
+    - chmod +x omnibus/build.sh
     - chmod +x walter_linux_amd64/walter
 
 test:
