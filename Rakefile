@@ -1,7 +1,7 @@
 require 'rest-client'
 
 PKG_DIR = 'omnibus/local/omnibus/pkg'
-BINTRAY_API_BASE = "https://marcy-terui:#{ENV['BINTRAY_API_KEY']}@#{BINTRAY_API}"
+BINTRAY_API_BASE = "https://marcy-terui:#{ENV['BINTRAY_API_KEY']}@api.bintray.com"
 
 def load_versions
   JSON.parse(File.read("#{PKG_DIR}/version-manifest.json"))
