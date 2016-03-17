@@ -17,7 +17,7 @@ def bintray_make_version(vers)
 
   RestClient.post(
     "#{BINTRAY_API_BASE}/packages/willyworks/deb/omnibus-lamvery/versions",
-    ,payload
+    payload,
     :content_type => :json,
     :accept => :json
   )
