@@ -39,7 +39,7 @@ build do
           " --enable-shared" \
           " --enable-ipv6" \
           " --enable-unicode=ucs4" \
-          " --with-dbmliborder=ndbm:bdb", env: env
+          " --with-dbmliborder=", env: env
 
   make env: env
   make "install", env: env
