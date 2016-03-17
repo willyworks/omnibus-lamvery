@@ -29,7 +29,7 @@ def bintray_deb_upload(version)
   Dir.glob("#{PKG_DIR}/*.deb") do |f|
     RestClient.put(
       path = "#{path_base}/#{File.basename(f)};deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1;override=1",
-      ,File.read(f)
+      File.read(f)
     )
   end
 end
