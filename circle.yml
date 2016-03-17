@@ -1,19 +1,32 @@
 ---
+general:
+  artifacts:
+    - ~/omnibus/local/omnibus/pkg
+
 machine:
   pre:
     - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
-  python:
-    version: 2.7.9
+  ruby:
+    version: 2.2.3
   services:
     - docker
 
 dependencies:
   cache_directories:
-    - ~/local
-  override:
-    - sudo pip install docker-compose
+    - ~/omnibus/local
+    - ~/walter_linux_amd64
+  pre:
+    - wget -O - https://github.com/walter-cd/walter/releases/download/v1.3.0/walter_1.3.0_linux_amd64.tar.gz | tar zxvf -
+    - docker pull marcy-terui/omnibus-ubuntu-14
+    - chmod +x build.sh
+    - chmod +x walter_linux_amd64/walter
 
 test:
   override:
-    - chmod +x build.sh
-    - docker-compose up
+    - ~/walter_linux_amd64/walter -f walter_build.yml
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - bundle exec rake bintray:release

@@ -1,0 +1,6 @@
+pipeline:
+  - name: build
+    parallel:
+      - name: ubuntu14
+        type: command
+        command: docker run -v omnibus:/omnibus -w /omnibus marcy-terui/omnibus-ubuntu-14 ./build.sh

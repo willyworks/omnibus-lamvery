@@ -1,6 +1,0 @@
-ubuntu14:
-  image: marcy/omnibus-ubuntu-14
-  working_dir: /build
-  volumes:
-    - .:/build
-  command: /build/build.sh
