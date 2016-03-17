@@ -1,0 +1,9 @@
+pipeline:
+  - name: prepare
+    parallel:
+      - name: ubuntu14
+        type: command
+        command: docker pull marcy/omnibus-ubuntu-14
+      - name: centos6
+        type: command
+        command: docker pull marcy/omnibus-centos-6
