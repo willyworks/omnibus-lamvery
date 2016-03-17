@@ -12,10 +12,13 @@ provisioner:
 platforms:
   # - name: centos-7.1
   #   run_list: yum-epel::default
-  # - name: centos-6.6
-  #   run_list: yum-epel::default
-  #   driver_config:
-  #     image: centos:centos6.6
+  - name: centos-6.6
+    driver_config:
+      image: centos:centos6.6
+    run_list:
+      - yum-epel::default
+      - omnibus::default
+      - omnibus-lamvery::yum_clean
   - name: ubuntu-14.04
     run_list:
       - apt::default

@@ -1,10 +1,3 @@
-GIT
-  remote: git://github.com/marcy-terui/kitchen-docker_cli.git
-  revision: fdd7508428e19db40eff9c7ee021d494ae434340
-  specs:
-    kitchen-docker_cli (0.15.0)
-      test-kitchen (>= 1.3)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -48,14 +41,20 @@ GEM
       mixlib-shellout (~> 2.0)
     cleanroom (1.0.0)
     diff-lcs (1.2.5)
+    domain_name (0.5.20160310)
+      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     hashie (3.4.3)
     hitimes (1.2.3)
+    http-cookie (1.0.2)
+      domain_name (~> 0.5)
     httpclient (2.7.1)
     json (1.8.3)
-    mime-types (1.25.1)
+    kitchen-docker_cli (0.15.0)
+      test-kitchen (>= 1.3)
+    mime-types (2.99.1)
     minitar (0.5.4)
     mixlib-authentication (1.4.0)
       mixlib-log
@@ -68,18 +67,19 @@ GEM
     mixlib-shellout (2.2.6)
     molinillo (0.2.3)
     multipart-post (2.0.0)
+    naturally (2.1.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (3.0.2)
+    netrc (0.11.0)
     nio4r (1.2.1)
     octokit (4.3.0)
       sawyer (~> 0.7.0, >= 0.5.3)
-    rake (10.5.0)
-    rdoc (4.2.0)
-      json (~> 1.4)
-    rest-client (1.6.8)
-      mime-types (~> 1.16)
-      rdoc (>= 2.4.2)
+    rake (11.1.1)
+    rest-client (1.8.0)
+      http-cookie (>= 1.0.2, < 2.0)
+      mime-types (>= 1.16, < 3.0)
+      netrc (~> 0.7)
     retryable (2.0.3)
     ridley (4.5.0)
       addressable
@@ -126,6 +126,9 @@ GEM
     thor (0.19.1)
     timers (4.0.4)
       hitimes
+    unf (0.1.4)
+      unf_ext
+    unf_ext (0.0.7.2)
     varia_model (0.4.1)
       buff-extensions (~> 1.0)
       hashie (>= 2.0.2, < 4.0.0)
@@ -135,6 +138,7 @@ PLATFORMS
 
 DEPENDENCIES
   berkshelf
-  kitchen-docker_cli!
+  kitchen-docker_cli
+  naturally
   rake
   rest-client

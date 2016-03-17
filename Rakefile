@@ -18,12 +18,15 @@ def bintray_make_version(vers)
     desc: "Lamvery #{vers['software']['lamvery']['locked_version']} with Python #{vers['software']['python']['locked_version']}",
   }.to_json
 
-  RestClient.post(
-    "#{BINTRAY_API_BASE}/packages/willyworks/deb/omnibus-lamvery/versions",
-    payload,
-    :content_type => :json,
-    :accept => :json
-  )
+  ['deb', 'rpm'].each do |pkg|
+    RestClient.post(
+      "#{BINTRAY_API_BASE}/packages/willyworks/#{pkg}/omnibus-lamvery/versions",
+      payload,
+      :content_type => :json,
+      :accept => :json
+    )
+  end
+
   version
 end
 
@@ -37,12 +40,24 @@ def bintray_deb_upload(version)
   end
 end
 
+def bintray_rpm_upload(version)
+  path_base = "#{BINTRAY_API_BASE}/content/willyworks/rpm/omnibus-lamvery/#{version}"
+  Dir.glob("#{PKG_DIR}/*.rpm") do |f|
+    RestClient.put(
+      "#{path_base}/centos/6/x86_64/#{File.basename(f)}",
+      File.read(f)
+    )
+  end
+end
+
 def bintray_delete_old_pkgs
-  res = RestClient.get "#{BINTRAY_API_BASE}/packages/willyworks/deb/omnibus-lamvery"
-  vers = JSON.parse(res)['versions']
-  if vers.length > 3
-    target = Naturally.sort(vers).first
-    RestClient.delete "#{BINTRAY_API_BASE}/packages/willyworks/deb/omnibus-lamvery/versions/#{target}"
+  ['deb', 'rpm'].each do |pkg|
+    res = RestClient.get "#{BINTRAY_API_BASE}/packages/willyworks/#{pkg}/omnibus-lamvery"
+    vers = JSON.parse(res)['versions']
+    if vers.length > 3
+      target = Naturally.sort(vers).first
+      RestClient.delete "#{BINTRAY_API_BASE}/packages/willyworks/#{pkg}/omnibus-lamvery/versions/#{target}"
+    end
   end
 end
 
@@ -53,6 +68,7 @@ namespace :bintray do
     vers = load_versions
     version = bintray_make_version(vers)
     bintray_deb_upload version
+    bintray_rpm_upload version
     bintray_delete_old_pkgs
   end
 

@@ -17,6 +17,7 @@ dependencies:
     - ~/walter
   pre:
     - docker pull marcy/omnibus-ubuntu-14
+    - docker pull marcy/omnibus-centos-6
     - chmod +x omnibus/build.sh
     - chmod +x install_walter.sh
     - ./install_walter.sh 1.3.0

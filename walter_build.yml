@@ -4,3 +4,6 @@ pipeline:
       - name: ubuntu14
         type: command
         command: docker run -v $PWD/omnibus:/omnibus -w /omnibus marcy/omnibus-ubuntu-14 /omnibus/build.sh
+      - name: centos6
+        type: command
+        command: docker run -v $PWD/omnibus:/omnibus -w /omnibus marcy/omnibus-centos-6 /omnibus/build.sh
