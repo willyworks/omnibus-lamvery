@@ -3,7 +3,7 @@ require 'json'
 require 'naturally'
 
 API_KEY = ENV['BINTRAY_API_KEY']
-PKG_DIR = 'omnibus/pkg'
+PKG_DIR = 'pkg'
 BINTRAY_API_BASE = "https://marcy-terui:#{API_KEY}@api.bintray.com"
 
 def load_versions

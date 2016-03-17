@@ -3,7 +3,7 @@ pipeline:
     parallel:
       - name: ubuntu14
         type: command
-        command: docker run -v $PWD/omnibus:/omnibus -w /omnibus marcy/omnibus-ubuntu-14 /omnibus/build.sh
+        command: docker run -v $PWD/omnibus:/omnibus -v $PWD/pkg:/omnibus/pkg -v $PWD/local/ubuntu14:/omnibus/local -w /omnibus marcy/omnibus-ubuntu-14 /omnibus/build.sh
       - name: centos6
         type: command
-        command: docker run -v $PWD/omnibus:/omnibus -w /omnibus marcy/omnibus-centos-6 /omnibus/build.sh
+        command: docker run -v $PWD/omnibus:/omnibus -v $PWD/pkg:/omnibus/pkg -v $PWD/local/centos6:/omnibus/local -w /omnibus marcy/omnibus-centos-6 /omnibus/build.sh
