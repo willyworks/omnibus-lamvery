@@ -23,7 +23,7 @@ dependencies:
 
 test:
   override:
-    - ~/bin/walter -f walter_build.yml
+    - ~/bin/walter -c walter_build.yml
 
 deployment:
   master:
