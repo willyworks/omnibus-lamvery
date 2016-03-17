@@ -1,5 +1,7 @@
-set -x
-set -e
+#!/usr/bin/env bash
+
+set -ex
+
 W_VERS=$1
 W_DIR=walter_linux_amd64
 
