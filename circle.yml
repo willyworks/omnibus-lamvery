@@ -24,7 +24,7 @@ dependencies:
 
 test:
   override:
-    - export BUILD_VERSION=$(bundle exec rake bintry:version)
+    - export BUILD_VERSION=$(bundle exec rake bintray:version)
     - ~/bin/walter -c walter_build.yml
 
 deployment:
