@@ -19,10 +19,10 @@ build_iteration lamvery_version[1]
 # Creates required build directories
 dependency "preparation"
 
-description "Lamvery #{lamvery_version} with Python 2.7.9"
+description "Lamvery #{lamvery_version[0]} with Python 2.7.9"
 dependency "python"
 dependency "pypi"
-override :lamvery, version: lamvery_version
+override :lamvery, version: lamvery_version[0]
 dependency "lamvery"
 dependency "virtualenv"
 
