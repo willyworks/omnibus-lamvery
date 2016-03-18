@@ -89,8 +89,8 @@ namespace :bintray do
   task :release do
     vers = load_versions
     version = bintray_make_version(vers)
-    bintray_deb_upload version
-    bintray_rpm_upload version
+    bintray_deb_upload
+    bintray_rpm_upload
     bintray_delete_old_pkgs
   end
 
