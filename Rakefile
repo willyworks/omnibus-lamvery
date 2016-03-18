@@ -1,6 +1,8 @@
 require 'rest-client'
 require 'json'
 require 'naturally'
+require 'rexml/document'
+require 'open-uri'
 
 API_KEY = ENV['BINTRAY_API_KEY']
 PKG_DIR = 'pkg'
@@ -10,8 +12,27 @@ def load_versions
   JSON.parse(File.read("#{PKG_DIR}/version-manifest.json"))
 end
 
+def bintray_get_build_version
+  doc = REXML::Document.new(open('https://pypi.python.org/pypi?:action=doap&name=lamvery').read)
+  lamvery_version = doc.elements['rdf:RDF/Project/release/Version/revision'].text
+  num = 1
+  loop do
+    ['deb', 'rpm'].each do |pkg|
+      version = "#{lamvery_version}-#{num}"
+      res = RestClient.get "#{BINTRAY_API_BASE}/packages/willyworks/#{pkg}/omnibus-lamvery"
+      vers = JSON.parse(res)['versions']
+      if vers.include?(version)
+        num += 1
+        next
+      end
+      return version
+    end
+  end
+end
+
+
 def bintray_make_version(vers)
-  version = "#{vers['build_version']}-#{ENV['CIRCLE_BUILD_NUM']}"
+  version = ENV['BUILD_VERSION']
 
   payload = {
     name: version,
@@ -27,10 +48,10 @@ def bintray_make_version(vers)
     )
   end
 
-  version
 end
 
-def bintray_deb_upload(version)
+def bintray_deb_upload
+  version = ENV['BUILD_VERSION']
   path_base = "#{BINTRAY_API_BASE}/content/willyworks/deb/omnibus-lamvery/#{version}"
   Dir.glob("#{PKG_DIR}/*.deb") do |f|
     RestClient.put(
@@ -40,7 +61,8 @@ def bintray_deb_upload(version)
   end
 end
 
-def bintray_rpm_upload(version)
+def bintray_rpm_upload
+  version = ENV['BUILD_VERSION']
   path_base = "#{BINTRAY_API_BASE}/content/willyworks/rpm/omnibus-lamvery/#{version}"
   Dir.glob("#{PKG_DIR}/*.rpm") do |f|
     RestClient.put(
@@ -70,6 +92,11 @@ namespace :bintray do
     bintray_deb_upload version
     bintray_rpm_upload version
     bintray_delete_old_pkgs
+  end
+
+  desc "get build version"
+  task :version do
+    print bintray_get_build_version
   end
 
 end

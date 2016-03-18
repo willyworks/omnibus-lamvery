@@ -8,16 +8,13 @@ name "lamvery"
 maintainer "Willyworks"
 homepage "https://willy.works"
 
-require 'rexml/document'
-require 'open-uri'
-doc = REXML::Document.new(open('https://pypi.python.org/pypi?:action=doap&name=lamvery').read)
-lamvery_version = doc.elements['rdf:RDF/Project/release/Version/revision'].text
+lamvery_version = ENV['BUILD_VERSION'].split('-')
 
 # Defaults to C:/lamvery on Windows
 # and /opt/lamvery on all other platforms
 install_dir "#{default_root}/#{name}"
-build_version lamvery_version
-build_iteration 1
+build_version lamvery_version[0]
+build_iteration lamvery_version[1]
 
 # Creates required build directories
 dependency "preparation"
