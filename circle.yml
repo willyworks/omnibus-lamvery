@@ -21,15 +21,18 @@ dependencies:
     - mkdir -p ~/local/{ubuntu14,centos6}
     - ./install_walter.sh 1.3.0
     - ~/bin/walter -c walter_pre.yml
+    - bundle exec rake bintray:version > version.txt
 
 test:
   override:
     - |
-      export BUILD_VERSION=$(bundle exec rake bintray:version)
+      export BUILD_VERSION=$(cat version.txt)
       ~/bin/walter -c walter_build.yml
 
 deployment:
   master:
     branch: master
     commands:
-      - bundle exec rake bintray:release
+      - |
+        export BUILD_VERSION=$(cat version.txt)
+        bundle exec rake bintray:release
