@@ -44,7 +44,7 @@ def bintray_rpm_upload(version)
   path_base = "#{BINTRAY_API_BASE}/content/willyworks/rpm/omnibus-lamvery/#{version}"
   Dir.glob("#{PKG_DIR}/*.rpm") do |f|
     RestClient.put(
-      "#{path_base}/centos/6/x86_64/#{File.basename(f)}",
+      "#{path_base}/centos/6/x86_64/#{File.basename(f)}?publish=1&override=1",
       File.read(f)
     )
   end
