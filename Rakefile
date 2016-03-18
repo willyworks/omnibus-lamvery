@@ -6,7 +6,7 @@ require 'open-uri'
 
 API_KEY = ENV['BINTRAY_API_KEY']
 PKG_DIR = 'pkg'
-BINTRAY_API_BASE = "https://marcy-terui:#{API_KEY}@api.bintray.com"
+BINTRAY_API_BASE = "https://marcy-terui:#{API_KEY}@bintray.com/api/v1"
 
 def load_versions
   JSON.parse(File.read("#{PKG_DIR}/version-manifest.json"))
