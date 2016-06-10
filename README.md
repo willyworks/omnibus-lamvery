@@ -1,5 +1,8 @@
-lamvery Omnibus project
+Lamvery Omnibus project
 =======================
+
+[![CircleCI](https://circleci.com/gh/willyworks/omnibus-lamvery.svg?style=svg)](https://circleci.com/gh/willyworks/omnibus-lamvery)
+
 This project creates full-stack platform-specific packages for
 `lamvery`!
 
