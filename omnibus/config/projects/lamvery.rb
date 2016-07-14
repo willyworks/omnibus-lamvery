@@ -26,6 +26,11 @@ override :lamvery, version: lamvery_version[0]
 dependency "lamvery"
 dependency "virtualenv"
 
+# patch: https://github.com/chef/omnibus-software/issues/695
+override :zlib, source: {url: 'http://downloads.sourceforge.net/project/libpng/zlib/1.2.8/zlib-1.2.8.tar.gz'}
+override :expat, source: {url: 'http://downloads.sourceforge.net/project/expat/expat/2.1.0/expat-2.1.0.tar.gz'}
+override :pcre, source: {url: 'http://downloads.sourceforge.net/project/pcre/pcre/8.38/pcre-8.38.tar.gz'}
+
 # Version manifest file
 dependency "version-manifest"
 
